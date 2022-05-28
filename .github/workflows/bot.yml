@@ -22,8 +22,8 @@ jobs:
           # Waits 350 minutes 
           while ((${TIME_LEFT:=350} > 0)); do
             printf "Please wait %.f minutes ...\n" "${TIME_LEFT}"
-            sleep 8m
-            TIME_LEFT=$((TIME_LEFT - 8))
+            sleep 17m
+            TIME_LEFT=$((TIME_LEFT - 17))
           done
           # Triggers same workflow before the other job finishes
           curl -X POST --header "Authorization: token ${{ secrets.GH_TOKEN }}" https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/mirror-bot.yml/dispatches -d '{"ref":"main"}'
