@@ -19,8 +19,8 @@ jobs:
     steps:
       - name: Wait and Early Trigger next workflow
         run: |
-          # Waits 350 minutes 
-          while ((${TIME_LEFT:=350} > 0)); do
+          # Waits 340 minutes 
+          while ((${TIME_LEFT:=340} > 0)); do
             printf "Please wait %.f minutes ...\n" "${TIME_LEFT}"
             sleep 17m
             TIME_LEFT=$((TIME_LEFT - 17))
@@ -60,7 +60,7 @@ jobs:
           docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
           docker image ls
       - name: Running Mirror Bot inside the Docker-VM
-        timeout-minutes: 350
+        timeout-minutes: 340
         continue-on-error: true
         run: |
           eval $(docker-machine env default)
